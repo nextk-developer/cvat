@@ -707,3 +707,7 @@ CVAT_CONCURRENT_CHUNK_PROCESSING = int(os.getenv('CVAT_CONCURRENT_CHUNK_PROCESSI
 
 from cvat.rq_patching import update_started_job_registry_cleanup
 update_started_job_registry_cleanup()
+
+HEALTH_CHECK = {
+    "DISK_USAGE_MAX": 99
+}
