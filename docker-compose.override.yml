@@ -1,0 +1,38 @@
+services:
+  cvat_server:
+    volumes:
+      - cvat_share:/home/django/share:ro
+    labels:
+      - traefik.http.routers.cvat.rule=(Host(`172.16.0.32`) || Host(`211.198.128.30`)) &&
+          PathPrefix(`/api/`, `/static/`, `/admin`, `/documentation/`, `/django-rq`)
+          # PathPrefix(`/api/`, `/git/`, `/opencv/`, `/analytics/`, `/static/`, `/admin`, `/documentation/`, `/django-rq`)
+
+  cvat_worker_import:
+    volumes:
+      - cvat_share:/home/django/share:ro
+      # - ./manage.py:/home/django/manage.py
+
+  cvat_ui:
+    labels:
+      - traefik.http.routers.cvat-ui.rule=Host(`172.16.0.32`) || Host(`211.198.128.30`)
+
+volumes:
+  cvat_share:
+    driver_opts:
+      type: cifs
+      o: username=nextk,password=Enter2424!@,uid=1000,gid=1000
+      device: "//172.16.0.10/CVAT_Dataset/"
+
+      # device: "ftp://ijintran:enter2424@172.16.0.7:21/Next k/private/ijintran/cvat_storage"
+      # o: addr=172.16.0.7
+      # o: "username=ijintran,password=enter2424,uid=1000,gid=1000"
+
+
+
+
+# ->create local file for follow volumes:
+# cvat_db:
+# cvat_data:
+# cvat_keys:
+# cvat_logs:
+# cvat_events_db:
