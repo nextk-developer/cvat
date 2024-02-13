@@ -96,7 +96,7 @@ const defaultKeyMap = ({
     DELETE_OBJECT: {
         name: 'Delete object',
         description: 'Delete an active object. Use shift to force delete of locked objects',
-        sequences: ['del', 'shift+del'],
+        sequences: ['del', 'shift+del', 'a'],
         action: 'keydown',
     },
     TO_BACKGROUND: {
@@ -170,7 +170,7 @@ const defaultKeyMap = ({
         name: 'Draw mode',
         description:
             'Repeat the latest procedure of drawing with the same parameters (shift to redraw an existing shape)',
-        sequences: ['shift+n', 'n'],
+        sequences: ['shift+n', 'n', 's'],
         action: 'keydown',
     },
     OPEN_REVIEW_ISSUE: {
@@ -333,7 +333,7 @@ const defaultKeyMap = ({
     SWITCH_LABEL: {
         name: 'Switch label',
         description: 'Changes a label for an activated object or for the next drawn object if no objects are activated',
-        sequences: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((val: string): string => `ctrl+${val}`),
+        sequences: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((val: string): string => `+${val}`),
         action: 'keydown',
     },
     TILT_UP: {
