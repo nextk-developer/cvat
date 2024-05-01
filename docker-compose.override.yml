@@ -12,6 +12,10 @@ services:
       - cvat_share:/home/django/share:ro
       # - ./manage.py:/home/django/manage.py
 
+  cvat_worker_export:
+    volumes:
+      - cvat_share:/home/django/share:ro
+      
   cvat_ui:
     labels:
       - traefik.http.routers.cvat-ui.rule=Host(`172.16.0.32`) || Host(`211.198.128.30`)
